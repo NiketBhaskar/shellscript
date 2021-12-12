@@ -1,33 +1,18 @@
 #! /usr/bin/bash
 
 function isprime(){
-echo "Enter a number"
-read number
- 
-i=2 
-
-#flag variable 
-f=0 
-
-#running a loop from 2 to number/2 
-while test $i -le `expr $number / 2` 
+echo "Enter Number : "
+read n
+for((i=2; i<=$n/2; i++))
 do
-
-#checking if i is factor of number 
-if test `expr $number % $i` -eq 0 
-then
-f=1 
-fi
-
-#increment the loop variable 
-i=`expr $i + 1` 
+  ans=$(( n%i ))
+  if [ $ans -eq 0 ]
+  then
+    echo "$n is not a prime number."
+    exit 0
+  fi
 done
-if test $f -eq 1 
-then
-echo "Not Prime"
-else
-echo "Prime"
-fi
+echo "$n is a prime number."
 
 }
 
